@@ -29,3 +29,15 @@ jobs:
         pip install --upgrade platformio
     - name: Run PlatformIO
       run: pio run -e esp32dev
+
+    - name: Rename artifact
+      run: |
+        ls -lah 
+        cp .pio/build/esp32dev/firmware.bin ghota_test-firmware.bin
+    - name: Archive Firmware Files
+      uses: actions/upload-artifact@v3
+      with: 
+        name: ghota_test-firmware
+        path: "*-ghota_test.bin"
+
+
