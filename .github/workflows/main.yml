@@ -43,13 +43,12 @@ jobs:
     steps:
     - name: Download Firmware Files
       uses: actions/download-artifact@v2
-      with:
-        path: release
+      
     - name: Release Firmware
       uses: ncipollo/release-action@v1
       if: startsWith(github.ref, 'refs/tags/') 
       with:
-        artifacts: release/*/*.bin
+        artifacts: firmware.bin
         generateReleaseNotes: true
         allowUpdates: true
 
